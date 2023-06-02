@@ -1,23 +1,19 @@
 #include "EstudianteCobra.h"
+#include <iostream>
 
-EstudianteCobra::EstudianteCobra(const std::string& nombre, int edad, Cinta* cinta)
-    : Estudiante(nombre, edad, cinta), fuerzaPiernas(0) {
-    generarAtributos();
+EstudianteCobra::EstudianteCobra(const std::string& nombre, int edad, const std::string& colorCinta, int nivelCinta)
+    : Estudiante(nombre, edad), cinta(colorCinta, nivelCinta) {}
+
+Cinta EstudianteCobra::getCinta() const {
+    return cinta;
 }
 
-void EstudianteCobra::generarAtributos() {
-    // Generar valores aleatorios para fuerza y resistencia
-    fuerza = rand() % 31;
-    resistencia = rand() % 31;
-    overall = fuerza + fuerzaPiernas;
+void EstudianteCobra::setCinta(const Cinta& cinta) {
+    this->cinta = cinta;
 }
 
-int EstudianteCobra::getFuerzaPiernas() const {
-    return fuerzaPiernas;
-}
-
-void EstudianteCobra::setFuerzaPiernas(int fuerzaPiernas) {
-    this->fuerzaPiernas = fuerzaPiernas;
-    // Recalcular el overall cuando se modifica la fuerza de las piernas
-    overall = fuerza + fuerzaPiernas;
+void EstudianteCobra::mostrarInformacion() const {
+    Estudiante::mostrarInformacion();
+    std::cout << "Dojo: Cobra" << std::endl;
+    std::cout << "Cinta: " << cinta.getColor() << " (Nivel " << cinta.getNivel() << ")" << std::endl;
 }

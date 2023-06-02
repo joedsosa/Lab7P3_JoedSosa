@@ -1,23 +1,19 @@
-#include "estudianteblockchain.h"
+#include "EstudianteBlockchain.h"
+#include <iostream>
 
-EstudianteBlockchain::EstudianteBlockchain(const std::string& nombre, int edad, Cinta* cinta)
-    : Estudiante(nombre, edad, cinta), fuerzaBrazos(0) {
-    generarAtributos();
+EstudianteBlockchain::EstudianteBlockchain(const std::string& nombre, int edad, const std::string& colorCinta, int nivelCinta)
+    : Estudiante(nombre, edad), cinta(colorCinta, nivelCinta) {}
+
+Cinta EstudianteBlockchain::getCinta() const {
+    return cinta;
 }
 
-void EstudianteBlockchain::generarAtributos() {
-    // Generar valores aleatorios para fuerza y resistencia
-    fuerza = rand() % 31;
-    resistencia = rand() % 31;
-    overall = fuerza + fuerzaBrazos;
+void EstudianteBlockchain::setCinta(const Cinta& cinta) {
+    this->cinta = cinta;
 }
 
-int EstudianteBlockchain::getFuerzaBrazos() const {
-    return fuerzaBrazos;
-}
-
-void EstudianteBlockchain::setFuerzaBrazos(int fuerzaBrazos) {
-    this->fuerzaBrazos = fuerzaBrazos;
-    // Recalcular el overall cuando se modifica la fuerza de los brazos
-    overall = fuerza + fuerzaBrazos;
+void EstudianteBlockchain::mostrarInformacion() const {
+    Estudiante::mostrarInformacion();
+    std::cout << "Dojo: Blockchain" << std::endl;
+    std::cout << "Cinta: " << cinta.getColor() << " (Nivel " << cinta.getNivel() << ")" << std::endl;
 }

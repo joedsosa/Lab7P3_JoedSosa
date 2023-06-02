@@ -1,12 +1,9 @@
-#include "estudiante.h"
+#include "Estudiante.h"
 
-Estudiante::Estudiante(const std::string& nombre, int edad, Cinta* cinta)
-    : nombre(nombre), edad(edad), cinta(cinta), fuerza(0), resistencia(0), overall(0), vida(100) {
-}
+Estudiante :: Estudiante(const std::string& nombre, int edad, const Cinta& cinta)
+    : nombre(nombre), edad(edad), vida(100), cinta(cinta) {}
 
-Estudiante::~Estudiante() {
-    delete cinta;
-}
+Estudiante::~Estudiante() {}
 
 std::string Estudiante::getNombre() const {
     return nombre;
@@ -16,48 +13,38 @@ int Estudiante::getEdad() const {
     return edad;
 }
 
-Cinta* Estudiante::getCinta() const {
-    return cinta;
-}
-
-int Estudiante::getFuerza() const {
-    return fuerza;
-}
-
-int Estudiante::getResistencia() const {
-    return resistencia;
-}
-
-int Estudiante::getOverall() const {
-    return overall;
-}
-
 int Estudiante::getVida() const {
     return vida;
 }
 
-void Estudiante::setNombre(const std::string& nombre) {
-    this->nombre = nombre;
+Cinta Estudiante::getCinta() const {
+    return cinta;
 }
 
-void Estudiante::setEdad(int edad) {
-    this->edad = edad;
+void Estudiante::setVida(int vida) {
+    this->vida = vida;
 }
 
-void Estudiante::setCinta(Cinta* cinta) {
-    this->cinta = cinta;
+int Estudiante::calcularAtaque() const {
+    int overallFuerza = getOverall();
+    double porcentajeAtaque = getPorcentajeAtaque();
+    return static_cast<int>(overallFuerza * porcentajeAtaque);
 }
 
-void Estudiante::setFuerza(int fuerza) {
-    this->fuerza = fuerza;
+int Estudiante::calcularDefensa() const {
+    int resistencia = getResistencia();
+    double porcentajeDefensa = getPorcentajeDefensa();
+    return static_cast<int>(resistencia * porcentajeDefensa);
 }
 
-void Estudiante::setResistencia(int resistencia) {
-    this->resistencia = resistencia;
+void Estudiante::recibirAtaque(int ataque) {
+    int defensa = calcularDefensa();
+    int danio = ataque - defensa;
+    if (danio < 0) {
+        danio = 0;
+    }
+    vida -= danio;
+    if (vida < 0) {
+        vida = 0;
+    }
 }
-
-void Estudiante::setOverall(int overall) {
-    this->overall = overall;
-}
-
-

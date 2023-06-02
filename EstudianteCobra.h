@@ -1,18 +1,20 @@
 #ifndef ESTUDIANTECOBRA_H
 #define ESTUDIANTECOBRA_H
 
-#include "estudiante.h"
+#include "Estudiante.h"
+#include "Cinta.h"
 
 class EstudianteCobra : public Estudiante {
-public:
-    EstudianteCobra(const std::string& nombre, int edad, Cinta* cinta);
-
-    void generarAtributos() override;
-    int getFuerzaPiernas() const;
-    void setFuerzaPiernas(int fuerzaPiernas);
-
 private:
-    int fuerzaPiernas;
+    Cinta cinta;
+
+public:
+    EstudianteCobra(const std::string& nombre, int edad, const std::string& colorCinta, int nivelCinta);
+
+    Cinta getCinta() const;
+    void setCinta(const Cinta& cinta);
+
+    void mostrarInformacion() const override;
 };
 
 #endif

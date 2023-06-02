@@ -5,15 +5,18 @@
 
 class Cinta {
 private:
+    std::string color;
     int nivel;
-    std::string colorCinta;
 
 public:
-    Cinta();
-    int getNivel() const;
-    std::string getColorCinta() const;
-    void setNivel(int nivel);
-    void actualizarColorCinta();
-};
+    Cinta(const std::string& color, int nivel);
 
+    std::string getColor() const;
+    int getNivel() const;
+    void setColor(const std::string& color);
+    void setNivel(int nivel);
+    void ascender();
+    void descender();
+};
 #endif
+

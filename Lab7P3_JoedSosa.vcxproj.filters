@@ -24,19 +24,13 @@
     <ClCompile Include="Cinta.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Dojo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EstudianteCobra.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EstudianteBlockchain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CintaCobra.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CintaBlockchain.cpp">
+    <ClCompile Include="Dojo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,19 +41,13 @@
     <ClInclude Include="Cinta.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Dojo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="EstudianteCobra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EstudianteBlockchain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CintaCobra.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CintaBlockChain.h">
+    <ClInclude Include="Dojo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

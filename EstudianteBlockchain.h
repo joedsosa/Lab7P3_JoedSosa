@@ -1,18 +1,20 @@
 #ifndef ESTUDIANTEBLOCKCHAIN_H
 #define ESTUDIANTEBLOCKCHAIN_H
 
-#include "estudiante.h"
+#include "Estudiante.h"
+#include "Cinta.h"
 
 class EstudianteBlockchain : public Estudiante {
-public:
-    EstudianteBlockchain(const std::string& nombre, int edad, Cinta* cinta);
-
-    void generarAtributos() override;
-    int getFuerzaBrazos() const;
-    void setFuerzaBrazos(int fuerzaBrazos);
-
 private:
-    int fuerzaBrazos;
+    Cinta cinta;
+
+public:
+    EstudianteBlockchain(const std::string& nombre, int edad, const std::string& colorCinta, int nivelCinta);
+
+    Cinta getCinta() const;
+    void setCinta(const Cinta& cinta);
+
+    void mostrarInformacion() const override;
 };
 
 #endif

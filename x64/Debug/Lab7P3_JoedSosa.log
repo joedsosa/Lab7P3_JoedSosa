@@ -1,13 +1,41 @@
 ﻿  Cinta.cpp
-  CintaBlockchain.cpp
-  CintaCobra.cpp
-  Dojo.cpp
   Estudiante.cpp
   EstudianteBlockchain.cpp
   EstudianteCobra.cpp
   Lab7P3_JoedSosa.cpp
-C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(82,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(103,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(48,26): error C2665: 'Cinta::Cinta': no overloaded function could convert all the argument types
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Cinta.h(17,1): message : could be 'Cinta::Cinta(Cinta &&)'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(48,26): message : 'Cinta::Cinta(Cinta &&)': cannot convert argument 1 from 'int' to 'Cinta &&'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(48,27): message : Reason: cannot convert from 'int' to 'Cinta'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(48,27): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Cinta.h(17,1): message : or       'Cinta::Cinta(const Cinta &)'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(48,26): message : 'Cinta::Cinta(const Cinta &)': cannot convert argument 1 from 'int' to 'const Cinta &'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(48,27): message : Reason: cannot convert from 'int' to 'const Cinta'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(48,27): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(48,26): message : while trying to match the argument list '(int)'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,26): error C2665: 'Cinta::Cinta': no overloaded function could convert all the argument types
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Cinta.h(17,1): message : could be 'Cinta::Cinta(Cinta &&)'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,26): message : 'Cinta::Cinta(Cinta &&)': cannot convert argument 1 from 'int' to 'Cinta &&'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,27): message : Reason: cannot convert from 'int' to 'Cinta'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,27): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Cinta.h(17,1): message : or       'Cinta::Cinta(const Cinta &)'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,26): message : 'Cinta::Cinta(const Cinta &)': cannot convert argument 1 from 'int' to 'const Cinta &'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,27): message : Reason: cannot convert from 'int' to 'const Cinta'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,27): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,26): message : while trying to match the argument list '(int)'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(71,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(100,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(121,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(141,9): error C2360: initialization of 'estudiante' is skipped by 'case' label
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(131,26): message : see declaration of 'estudiante'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(144,9): error C2360: initialization of 'estudiante' is skipped by 'case' label
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(131,26): message : see declaration of 'estudiante'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(147,9): error C2360: initialization of 'estudiante' is skipped by 'case' label
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(131,26): message : see declaration of 'estudiante'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(150,9): error C2360: initialization of 'estudiante' is skipped by 'case' label
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(131,26): message : see declaration of 'estudiante'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(153,9): error C2360: initialization of 'estudiante' is skipped by 'case' label
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(131,26): message : see declaration of 'estudiante'
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(156,9): error C2361: initialization of 'estudiante' is skipped by 'default' label
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(131,26): message : see declaration of 'estudiante'
   Generating Code...
-  Lab7P3_JoedSosa.vcxproj -> C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\x64\Debug\Lab7P3_JoedSosa.exe

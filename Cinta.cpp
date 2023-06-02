@@ -1,47 +1,30 @@
 #include "Cinta.h"
 
-Cinta::Cinta() : nivel(1), colorCinta("") {
-    actualizarColorCinta();
+Cinta::Cinta(const std::string& color, int nivel)
+    : color(color), nivel(nivel) {}
+
+std::string Cinta::getColor() const {
+    return color;
 }
 
 int Cinta::getNivel() const {
     return nivel;
 }
 
-std::string Cinta::getColorCinta() const {
-    return colorCinta;
+void Cinta::setColor(const std::string& color) {
+    this->color = color;
 }
 
 void Cinta::setNivel(int nivel) {
     this->nivel = nivel;
-    actualizarColorCinta();
 }
 
-void Cinta::actualizarColorCinta() {
-    switch (nivel) {
-    case 1:
-        colorCinta = "Blanco";
-        break;
-    case 2:
-        colorCinta = "Amarillo";
-        break;
-    case 3:
-        colorCinta = "Naranja";
-        break;
-    case 4:
-        colorCinta = "Verde";
-        break;
-    case 5:
-        colorCinta = "Azul";
-        break;
-    case 6:
-        colorCinta = "Marrón";
-        break;
-    case 7:
-        colorCinta = "Negro";
-        break;
-    default:
-        colorCinta = "";
-        break;
+void Cinta::ascender() {
+    nivel++;
+}
+
+void Cinta::descender() {
+    if (nivel > 0) {
+        nivel--;
     }
 }
