@@ -33,6 +33,12 @@
     <ClCompile Include="EstudianteBlockchain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CintaCobra.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CintaBlockchain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Estudiante.h">
@@ -48,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EstudianteBlockchain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CintaCobra.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CintaBlockChain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

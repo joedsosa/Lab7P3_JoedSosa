@@ -1,31 +1,41 @@
 #ifndef ESTUDIANTE_H
 #define ESTUDIANTE_H
-#include "Cinta.h"
-#include <string>
 using namespace std;
+#include <iostream>
+#include <string>
+#include "cinta.h"
+#include <string>
 class Estudiante {
-private:
+public:
+    Estudiante(const string& nombre, int edad, Cinta* cinta);
+    virtual ~Estudiante();
+
+    string getNombre() const;
+    int getEdad() const;
+    Cinta* getCinta() const;
+    int getFuerza() const;
+    int getResistencia() const;
+    int getOverall() const;
+    int getVida() const;
+    void mostrarInformacion() const;
+    void setNombre(const string& nombre);
+    void setEdad(int edad);
+    void setCinta(Cinta* cinta);
+    void setFuerza(int fuerza);
+    void setResistencia(int resistencia);
+    void setOverall(int overall);
+    
+
+    virtual void generarAtributos() = 0;
+
+protected:
     string nombre;
     int edad;
+    Cinta* cinta;
     int fuerza;
     int resistencia;
     int overall;
-    int vida;
-    Cinta* cinta;
-
-public:
-    Estudiante(const string& nombre, int edad, Cinta* cinta);
-    void generarAtributosAleatorios();
-    void calcularOverall();
-    void mostrarInformacion();
-    void recibirAtaque(int ataque);
-    void otorgarAscenso();
-    void otorgarDescenso();
-    int getOverall() const;
-    int getVida() const;
-    std::string getNombre() const;
+    const int vida;
 };
 
 #endif
-
-

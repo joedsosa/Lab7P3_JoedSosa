@@ -1,0 +1,13 @@
+﻿  Cinta.cpp
+  CintaBlockchain.cpp
+  CintaCobra.cpp
+  Dojo.cpp
+  Estudiante.cpp
+  EstudianteBlockchain.cpp
+  EstudianteCobra.cpp
+  Lab7P3_JoedSosa.cpp
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(53,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(82,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\Lab7P3_JoedSosa.cpp(103,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  Lab7P3_JoedSosa.vcxproj -> C:\Users\joeds\OneDrive\Escritorio\Progra III\Lab7P3_JoedSosa\x64\Debug\Lab7P3_JoedSosa.exe
