@@ -5,18 +5,20 @@
 
 class Cinta {
 private:
-    std::string color;
     int nivel;
+    std::string colorCinta;
+    double porcentajeCinta;
 
 public:
-    Cinta(const std::string& color, int nivel);
+    Cinta();
+    ~Cinta();
 
-    std::string getColor() const;
-    int getNivel() const;
-    void setColor(const std::string& color);
+    int getNivel();
     void setNivel(int nivel);
-    void ascender();
-    void descender();
+    void setColorCinta(const std::string& color);
+    void getPorcentajeCinta(int color);
+    std::string getColorCinta();
+    void setColorCinta();
 };
-#endif
 
+#endif  // CINTA_H

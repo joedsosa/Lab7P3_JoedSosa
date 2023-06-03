@@ -1,50 +1,106 @@
 #include "Estudiante.h"
 
-Estudiante :: Estudiante(const std::string& nombre, int edad, const Cinta& cinta)
-    : nombre(nombre), edad(edad), vida(100), cinta(cinta) {}
+Estudiante::Estudiante(std::string nombre, int edad) {
+    this->nombre = nombre;
+    this->edad = edad;
+    this->cinta = nullptr;
+    this->fuerza = rand() % 31;
+    this->resistencia = rand() % 31;
+    this->overall = fuerza + resistencia;
+}
 
-Estudiante::~Estudiante() {}
+Estudiante::~Estudiante() {
+    delete cinta;
+}
 
-std::string Estudiante::getNombre() const {
+std::string Estudiante::getNombre() {
     return nombre;
 }
 
-int Estudiante::getEdad() const {
+void Estudiante::setNombre(std::string nombre) {
+    this->nombre = nombre;
+}
+
+int Estudiante::getEdad() {
     return edad;
 }
 
-int Estudiante::getVida() const {
-    return vida;
+void Estudiante::setEdad(int edad) {
+    this->edad = edad;
 }
 
-Cinta Estudiante::getCinta() const {
+Cinta* Estudiante::getCinta() {
     return cinta;
 }
 
-void Estudiante::setVida(int vida) {
-    this->vida = vida;
+void Estudiante::setCinta(Cinta* cinta) {
+    this->cinta = cinta;
 }
 
-int Estudiante::calcularAtaque() const {
-    int overallFuerza = getOverall();
-    double porcentajeAtaque = getPorcentajeAtaque();
-    return static_cast<int>(overallFuerza * porcentajeAtaque);
+int Estudiante::getFuerza() {
+    return fuerza;
 }
 
-int Estudiante::calcularDefensa() const {
-    int resistencia = getResistencia();
-    double porcentajeDefensa = getPorcentajeDefensa();
-    return static_cast<int>(resistencia * porcentajeDefensa);
+void Estudiante::setFuerza(int fuerza) {
+    this->fuerza = fuerza;
 }
 
-void Estudiante::recibirAtaque(int ataque) {
-    int defensa = calcularDefensa();
-    int danio = ataque - defensa;
-    if (danio < 0) {
-        danio = 0;
+int Estudiante::getResistencia() {
+    return resistencia;
+}
+
+void Estudiante::setResistencia(int resistencia) {
+    this->resistencia = resistencia;
+}
+
+int Estudiante::getOverall() {
+    return overall;
+}
+
+int Estudiante::getVida() {
+    return vida;
+}
+
+Estudiante& Estudiante::operator++() {
+    if (cinta->getNivel() < 7) {
+        cinta->setNivel(cinta->getNivel() + 1);
+        actualizarColorCinta();
     }
-    vida -= danio;
-    if (vida < 0) {
-        vida = 0;
+    return *this;
+}
+void Estudiante::actualizarColorCinta() {
+    switch (cinta->getNivel()) {
+    case 1:
+        cinta->setColorCinta("Blanco");
+        break;
+    case 2:
+        cinta->setColorCinta("Amarillo");
+        break;
+    case 3:
+        cinta->setColorCinta("Naranja");
+        break;
+    case 4:
+        cinta->setColorCinta("Verde");
+        break;
+    case 5:
+        cinta->setColorCinta("Azul");
+        break;
+    case 6:
+        cinta->setColorCinta("Marrón");
+        break;
+    case 7:
+        cinta->setColorCinta("Negro");
+        break;
+    default:
+        cinta->setColorCinta("Desconocido");
+        break;
     }
+}
+
+Estudiante& Estudiante::operator--() {
+    if (cinta->getNivel() > 1) {
+        cinta->setNivel(cinta->getNivel() - 1);
+        actualizarColorCinta();
+    }
+    return *this;
 }

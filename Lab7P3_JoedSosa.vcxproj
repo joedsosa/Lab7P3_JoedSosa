@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cinta.cpp" />
-    <ClCompile Include="Dojo.cpp" />
     <ClCompile Include="Estudiante.cpp" />
     <ClCompile Include="EstudianteBlockchain.cpp" />
     <ClCompile Include="EstudianteCobra.cpp" />
@@ -136,7 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cinta.h" />
-    <ClInclude Include="Dojo.h" />
     <ClInclude Include="Estudiante.h" />
     <ClInclude Include="EstudianteBlockchain.h" />
     <ClInclude Include="EstudianteCobra.h" />

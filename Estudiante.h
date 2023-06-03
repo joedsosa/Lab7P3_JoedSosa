@@ -3,31 +3,43 @@
 
 #include <string>
 #include "Cinta.h"
+
 class Estudiante {
-protected:
+protected: 
     std::string nombre;
     int edad;
-    int vida;
-    Cinta cinta;
+    Cinta* cinta;
+    int fuerza;
+    int resistencia;
+    int overall;
+    const int vida = 100;
+    int nivelCinta;
 
 public:
-    Estudiante(const std::string& nombre, int edad, const Cinta& cinta);
+    Estudiante(std::string nombre, int edad);
     virtual ~Estudiante();
+    void actualizarColorCinta();
 
-    std::string getNombre() const;
-    int getEdad() const;
-    int getVida() const;
-    Cinta getCinta() const;
-    void setVida(int vida);
+    
+    std::string getNombre();
+    void setNombre(std::string nombre);
 
-    virtual int getOverall() const = 0;
-    virtual int getResistencia() const = 0;
-    virtual double getPorcentajeAtaque() const = 0;
-    virtual double getPorcentajeDefensa() const = 0;
+    int getEdad();
+    void setEdad(int edad);
 
-    int calcularAtaque() const;
-    int calcularDefensa() const;
-    void recibirAtaque(int ataque);
+    Cinta* getCinta();
+    void setCinta(Cinta* cinta);
+
+    int getFuerza();
+    void setFuerza(int fuerza);
+
+    int getResistencia();
+    void setResistencia(int resistencia);
+    Estudiante& operator++();  
+    Estudiante& operator--();  
+    int getOverall();
+
+    int getVida();
 };
 
-#endif
+#endif  // ESTUDIANTE_H

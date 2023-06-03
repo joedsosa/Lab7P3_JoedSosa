@@ -1,297 +1,307 @@
 #include <iostream>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
-#include "Estudiante.h"
-#include "EstudianteBlockchain.h"
+#include <cstdlib>  // Para la función rand()
 #include "EstudianteCobra.h"
+#include "EstudianteBlockchain.h"
 
-// Funciones auxiliares
-//void mostrarMenu();
-//void agregarEstudiante(std::vector<Estudiante*>& estudiantes);
-//void mostrarEstudiantes(const std::vector<Estudiante*>& estudiantes);
-//void modificarEstudiante(std::vector<Estudiante*>& estudiantes);
-//void eliminarEstudiante(std::vector<Estudiante*>& estudiantes);
-//void simularTorneo(const std::vector<Estudiante*>& estudiantes);
-
-
-void mostrarMenu() {
-    std::cout << "----- Menú Principal -----" << std::endl;
-    std::cout << "1. Agregar Estudiante" << std::endl;
-    std::cout << "2. Mostrar Estudiantes" << std::endl;
-    std::cout << "3. Modificar Estudiante" << std::endl;
-    std::cout << "4. Eliminar Estudiante" << std::endl;
-    std::cout << "5. Simular Torneo" << std::endl;
-    std::cout << "6. Salir" << std::endl;
+// Función para mostrar el menú y obtener la opción del usuario
+int mostrarMenu() {
+    int opcion;
+    std::cout << "----------- Menú -----------\n";
+    std::cout << "1. Crear Estudiante\n";
+    std::cout << "2. Modificar Estudiante\n";
+    std::cout << "3. Eliminar Estudiante\n";
+    std::cout << "4. Listar Estudiantes\n";
+    std::cout << "5. Promover Cinta del Estudiante\n";
+    std::cout << "6. Degradar Cinta del Estudiante\n";
+    std::cout << "7. Simulación\n";
+    std::cout << "8. Salir\n";
+    std::cout << "Ingrese una opción: ";
+    std::cin >> opcion;
+    return opcion;
 }
-
-void agregarEstudiante(std::vector<Estudiante*>& estudiantes) {
-    std::string nombre;
-    int edad, opcionDojo;
-
-    std::cout << "----- Agregar Estudiante -----" << std::endl;
-    std::cout << "Ingrese el nombre del estudiante: ";
-    std::cin >> nombre;
-    std::cout << "Ingrese la edad del estudiante: ";
-    std::cin >> edad;
-
-    std::cout << "Seleccione el Dojo del estudiante:" << std::endl;
-    std::cout << "1. Dojo Blockchain" << std::endl;
-    std::cout << "2. Dojo Cobra" << std::endl;
+void crearEstudiante(std::vector<Estudiante*>& estudiantes) {
+    int opcionDojo;
+    std::cout << "De qué Dojo es el estudiante?\n";
+    std::cout << "1. Dojo Cobra\n";
+    std::cout << "2. Dojo Blockchain\n";
     std::cout << "Ingrese una opción: ";
     std::cin >> opcionDojo;
 
+    std::string nombre;
+    int edad;
+    std::cout << "Ingrese el nombre del estudiante: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombre);
+    std::cout << "Ingrese la edad del estudiante: ";
+    std::cin >> edad;
+
     if (opcionDojo == 1) {
-        std::string colorCinta;
-        int nivelCinta;
-
-        std::cout << "Ingrese el color de la cinta del estudiante: ";
-        std::cin >> colorCinta;
-        std::cout << "Ingrese el nivel de la cinta del estudiante: ";
-        std::cin >> nivelCinta;
-
-        Estudiante* estudiante = new EstudianteBlockchain(nombre, edad, colorCinta, nivelCinta);
+        EstudianteCobra* estudiante = new EstudianteCobra(nombre, edad);
         estudiantes.push_back(estudiante);
-
-        std::cout << "Estudiante agregado correctamente." << std::endl;
     }
     else if (opcionDojo == 2) {
-        std::string colorCinta;
-        int nivelCinta;
-
-        std::cout << "Ingrese el color de la cinta del estudiante: ";
-        std::cin >> colorCinta;
-        std::cout << "Ingrese el nivel de la cinta del estudiante: ";
-        std::cin >> nivelCinta;
-
-        Estudiante* estudiante = new EstudianteCobra(nombre, edad, colorCinta, nivelCinta);
+        EstudianteBlockchain* estudiante = new EstudianteBlockchain(nombre, edad);
         estudiantes.push_back(estudiante);
+    }
 
-        std::cout << "Estudiante agregado correctamente." << std::endl;
-    }
-    else {
-        std::cout << "Opción inválida. No se pudo agregar el estudiante." << std::endl;
-    }
+    std::cout << "Estudiante creado exitosamente!\n";
 }
-
-void mostrarEstudiantes(const std::vector<Estudiante*>& estudiantes) {
-    if (estudiantes.empty()) {
-        std::cout << "No hay estudiantes registrados." << std::endl;
-        return;
-    }
-
-    std::cout << "----- Estudiantes Registrados -----" << std::endl;
-    for (int i = 0; i < estudiantes.size(); i++) {
-        std::cout << "Estudiante #" << i + 1 << std::endl;
-        estudiantes[i]->mostrarInformacion();
-        std::cout << std::endl;
-    }
-}
-
 void modificarEstudiante(std::vector<Estudiante*>& estudiantes) {
-    int opcionEstudiante;
-
-    std::cout << "----- Modificar Estudiante -----" << std::endl;
-    std::cout << "Elige un estudiante: ";
-    std::cin >> opcionEstudiante;
-
-    if (opcionEstudiante >= 1 && opcionEstudiante <= estudiantes.size()) {
-        Estudiante* estudiante = estudiantes[opcionEstudiante - 1];
-
-        int opcion;
-        do {
-            std::cout << "---- MODIFICAR ESTUDIANTE ----" << std::endl;
-            std::cout << "1. Modificar Nombre" << std::endl;
-            std::cout << "2. Modificar Edad" << std::endl;
-            std::cout << "3. Regresar al Menú Principal" << std::endl;
-            std::cout << "Ingrese una opción: ";
-            std::cin >> opcion;
-            std::cout << std::endl;
-            std::string nombre;
-            switch (opcion) {
-            case 1:
-                
-                std::cout << "Ingrese el nuevo nombre: ";
-                std::cin >> nombre;
-                estudiante->setNombre(nombre);
-                std::cout << "Nombre modificado correctamente." << std::endl;
-                break;
-            case 2:
-                int nuevaEdad;
-                std::cout << "Ingrese la nueva edad: ";
-                std::cin >> nuevaEdad;
-                estudiante->setEdad(nuevaEdad);
-                std::cout << "Edad modificada correctamente." << std::endl;
-                break;
-            case 3:
-                std::cout << "Regresando al Menú Principal..." << std::endl;
-                break;
-            default:
-                std::cout << "Opción inválida. Inténtalo nuevamente." << std::endl;
-                break;
-            }
-
-            std::cout << std::endl;
-        } while (opcion != 3);
-    }
-    else {
-        std::cout << "Opción inválida." << std::endl;
-    }
-}
-
-void eliminarEstudiante(std::vector<Estudiante*>& estudiantes) {
-    int opcionEstudiante;
-
-    std::cout << "----- Eliminar Estudiante -----" << std::endl;
-    std::cout << "Elige un estudiante: ";
-    std::cin >> opcionEstudiante;
-
-    if (opcionEstudiante >= 1 && opcionEstudiante <= estudiantes.size()) {
-        Estudiante* estudiante = estudiantes[opcionEstudiante - 1];
-        estudiantes.erase(estudiantes.begin() + opcionEstudiante - 1);
-        delete estudiante;
-
-        std::cout << "Estudiante eliminado correctamente." << std::endl;
-    }
-    else {
-        std::cout << "Opción inválida." << std::endl;
-    }
-}
-
-void simularTorneo(const std::vector<Estudiante*>& estudiantes) {
-    if (estudiantes.size() < 8) {
-        std::cout << "No hay suficientes estudiantes para simular el torneo." << std::endl;
+    if (estudiantes.empty()) {
+        std::cout << "No hay estudiantes registrados.\n";
         return;
     }
 
-    std::vector<Estudiante*> participantes = estudiantes;  // Copiar la lista de estudiantes
+    int opcionEstudiante;
+    std::cout << "Elija el estudiante que desea modificar:\n";
+    for (int i = 0; i < estudiantes.size(); i++) {
+        std::cout << i + 1 << ". " << estudiantes[i]->getNombre() << std::endl;
+    }
+    std::cout << "Ingrese una opción: ";
+    std::cin >> opcionEstudiante;
 
-    // Verificar que haya exactamente 4 estudiantes por cada Dojo
+    if (opcionEstudiante >= 1 && opcionEstudiante <= estudiantes.size()) {
+        Estudiante* estudiante = estudiantes[opcionEstudiante - 1];
+        std::string nuevoNombre;
+        int nuevaEdad;
+        std::cout << "Ingrese el nuevo nombre del estudiante: ";
+        std::cin.ignore();
+        std::getline(std::cin, nuevoNombre);
+        std::cout << "Ingrese la nueva edad del estudiante: ";
+        std::cin >> nuevaEdad;
+        estudiante->setNombre(nuevoNombre);
+        estudiante->setEdad(nuevaEdad);
+        std::cout << "Estudiante modificado exitosamente!\n";
+    }
+    else {
+        std::cout << "Opción inválida.\n";
+    }
+}
+// Función para eliminar un estudiante existente
+void eliminarEstudiante(std::vector<Estudiante*>& estudiantes) {
+    if (estudiantes.empty()) {
+        std::cout << "No hay estudiantes registrados.\n";
+        return;
+    }
+
+    int opcionEstudiante;
+    std::cout << "Elija el estudiante que desea eliminar:\n";
+    for (int i = 0; i < estudiantes.size(); i++) {
+        std::cout << i + 1 << ". " << estudiantes[i]->getNombre() << std::endl;
+    }
+    std::cout << "Ingrese una opción: ";
+    std::cin >> opcionEstudiante;
+
+    if (opcionEstudiante >= 1 && opcionEstudiante <= estudiantes.size()) {
+        Estudiante* estudiante = estudiantes[opcionEstudiante - 1];
+        delete estudiante;
+        estudiantes.erase(estudiantes.begin() + opcionEstudiante - 1);
+        std::cout << "Estudiante eliminado exitosamente!\n";
+    }
+    else {
+        std::cout << "Opción inválida.\n";
+    }
+}
+// Función para listar los estudiantes registrados
+void listarEstudiantes(const std::vector<Estudiante*>& estudiantes) {
+    if (estudiantes.empty()) {
+        std::cout << "No hay estudiantes registrados.\n";
+        return;
+    }
+
+    std::cout << "----- Lista de Estudiantes -----\n";
+    for (int i = 0; i < estudiantes.size(); i++) {
+        Estudiante* estudiante = estudiantes[i];
+        std::cout << "Estudiante " << i + 1 << ":\n";
+        std::cout << "Nombre: " << estudiante->getNombre() << std::endl;
+        std::cout << "Edad: " << estudiante->getEdad() << std::endl;
+        std::cout << "Cinta: " << estudiante->getCinta()->getColorCinta() << std::endl;
+        std::cout << "Overall: " << estudiante->getOverall() << std::endl;
+        std::cout << "--------------------------------\n";
+    }
+}
+void promoverCinta(std::vector<Estudiante*>& estudiantes) {
+    if (estudiantes.empty()) {
+        std::cout << "No hay estudiantes registrados.\n";
+        return;
+    }
+
+    int opcionEstudiante;
+    std::cout << "Elija el estudiante al que desea promover la cinta:\n";
+    for (int i = 0; i < estudiantes.size(); i++) {
+        std::cout << i + 1 << ". " << estudiantes[i]->getNombre() << std::endl;
+    }
+    std::cout << "Ingrese una opción: ";
+    std::cin >> opcionEstudiante;
+
+    if (opcionEstudiante >= 1 && opcionEstudiante <= estudiantes.size()) {
+        Estudiante* estudiante = estudiantes[opcionEstudiante - 1];
+        if (estudiante++) {
+            std::cout << "La cinta del estudiante ha sido promovida.\n";
+            std::cout << "Ahora es cinta: " << estudiante->getCinta()->getColorCinta() << std::endl;
+        }
+        else {
+            std::cout << "El estudiante ya tiene la cinta máxima.\n";
+        }
+    }
+    else {
+        std::cout << "Opción inválida.\n";
+    }
+}
+
+// Función para degradar la cinta de un estudiante
+void degradarCinta(std::vector<Estudiante*>& estudiantes) {
+    if (estudiantes.empty()) {
+        std::cout << "No hay estudiantes registrados.\n";
+        return;
+    }
+
+    int opcionEstudiante;
+    std::cout << "Elija el estudiante al que desea degradar la cinta:\n";
+    for (int i = 0; i < estudiantes.size(); i++) {
+        std::cout << i + 1 << ". " << estudiantes[i]->getNombre() << std::endl;
+    }
+    std::cout << "Ingrese una opción: ";
+    std::cin >> opcionEstudiante;
+
+    if (opcionEstudiante >= 1 && opcionEstudiante <= estudiantes.size()) {
+        Estudiante* estudiante = estudiantes[opcionEstudiante - 1];
+        if (estudiante--) {
+            std::cout << "La cinta del estudiante ha sido degradada.\n";
+            std::cout << "Ahora es cinta: " << estudiante->getCinta()->getColorCinta() << std::endl;
+        }
+        else {
+            std::cout << "El estudiante ya tiene la cinta mínima.\n";
+        }
+    }
+    else {
+        std::cout << "Opción inválida.\n";
+    }
+}
+
+void simulacion(std::vector<Estudiante*>& estudiantes) {
+    if (estudiantes.empty()) {
+        std::cout << "No hay estudiantes registrados.\n";
+        return;
+    }
+
     int numDojoCobra = 0;
     int numDojoBlockchain = 0;
-
-    for (const auto& estudiante : estudiantes) {
+    for (Estudiante* estudiante : estudiantes) {
         if (dynamic_cast<EstudianteCobra*>(estudiante)) {
-            ++numDojoCobra;
+            numDojoCobra++;
         }
         else if (dynamic_cast<EstudianteBlockchain*>(estudiante)) {
-            ++numDojoBlockchain;
+            numDojoBlockchain++;
         }
     }
 
-    if (numDojoCobra != 4 || numDojoBlockchain != 4) {
-        std::cout << "No se cumplen las condiciones necesarias para simular el torneo." << std::endl;
+    if (numDojoCobra < 4 || numDojoBlockchain < 4) {
+        std::cout << "No hay suficientes estudiantes en los dojos para realizar la simulación.\n";
         return;
     }
 
-    std::cout << "¡Comienza el Torneo!" << std::endl;
-
-    while (participantes.size() > 1) {
-        // Seleccionar dos participantes al azar
-        int index1 = rand() % participantes.size();
-        Estudiante* participante1 = participantes[index1];
-        participantes.erase(participantes.begin() + index1);
-
-        int index2 = rand() % participantes.size();
-        Estudiante* participante2 = participantes[index2];
-        participantes.erase(participantes.begin() + index2);
-
-        // Simular el enfrentamiento
-        std::cout << std::endl;
-        std::cout << "¡Enfrentamiento!" << std::endl;
-        std::cout << "----------------" << std::endl;
-        std::cout << "Participante 1: " << participante1->getNombre() << std::endl;
-        std::cout << "Participante 2: " << participante2->getNombre() << std::endl;
-        std::cout << "----------------" << std::endl;
-
-        while (participante1->getVida() > 0 && participante2->getVida() > 0) {
-            // Calcular ataque de participante 1
-            double porcentajeAtaque1 = participante1->getCinta().getPorcentajeAtaque();
-            int ataque1 = static_cast<int>(participante1->getOverall() * porcentajeAtaque1);
-
-            // Calcular defensa de participante 2
-            double porcentajeDefensa2 = participante2->getCinta().getPorcentajeDefensa();
-            int defensa2 = static_cast<int>(participante2->getResistencia() * porcentajeDefensa2);
-
-            // Calcular daño
-            int danio1 = ataque1 - defensa2;
-            if (danio1 < 0) {
-                danio1 = 0;
-            }
-
-            // Actualizar vida de participante 2
-            int nuevaVida2 = participante2->getVida() - danio1;
-            if (nuevaVida2 < 0) {
-                nuevaVida2 = 0;
-            }
-            participante2->setVida(nuevaVida2);
-
-            std::cout << participante1->getNombre() << " ataca a " << participante2->getNombre() << " causando un daño de " << danio1 << std::endl;
-            std::cout << participante2->getNombre() << " tiene una vida restante de " << nuevaVida2 << std::endl;
-            std::cout << std::endl;
-
-            // Intercambiar roles
-            std::swap(participante1, participante2);
+    // Obtener los estudiantes de cada dojo
+    std::vector<EstudianteCobra*> dojoCobraEstudiantes;
+    std::vector<EstudianteBlockchain*> dojoBlockchainEstudiantes;
+    for (Estudiante* estudiante : estudiantes) {
+        if (EstudianteCobra* cobraEstudiante = dynamic_cast<EstudianteCobra*>(estudiante)) {
+            dojoCobraEstudiantes.push_back(cobraEstudiante);
         }
-
-        // Determinar al ganador del enfrentamiento
-        Estudiante* ganador = (participante1->getVida() > 0) ? participante1 : participante2;
-        std::cout << "¡El ganador del enfrentamiento es " << ganador->getNombre() << "!" << std::endl;
-
-        // Agregar al ganador de vuelta a la lista de participantes
-        participantes.push_back(ganador);
+        else if (EstudianteBlockchain* blockchainEstudiante = dynamic_cast<EstudianteBlockchain*>(estudiante)) {
+            dojoBlockchainEstudiantes.push_back(blockchainEstudiante);
+        }
     }
 
-    // Determinar al ganador del torneo
-    Estudiante* ganadorTorneo = participantes[0];
-    std::cout << std::endl;
-    std::cout << "¡El ganador del Torneo es " << ganadorTorneo->getNombre() << " del Dojo " << ganadorTorneo->getDojo() << "!" << std::endl;
+    // Validar si hay suficientes estudiantes en cada dojo
+    if (dojoCobraEstudiantes.size() < 4 || dojoBlockchainEstudiantes.size() < 4) {
+        std::cout << "No hay suficientes estudiantes en los dojos para realizar la simulación.\n";
+        return;
+    }
+
+    // Realizar la simulación de enfrentamientos
+    std::cout << "Simulación en progreso...\n";
+
+    // Mientras haya estudiantes en ambos dojos
+    while (!dojoCobraEstudiantes.empty() && !dojoBlockchainEstudiantes.empty()) {
+        // Seleccionar un estudiante aleatorio de cada dojo
+        int indexCobra = rand() % dojoCobraEstudiantes.size();
+        int indexBlockchain = rand() % dojoBlockchainEstudiantes.size();
+
+        EstudianteCobra* estudianteCobra = dojoCobraEstudiantes[indexCobra];
+        EstudianteBlockchain* estudianteBlockchain = dojoBlockchainEstudiantes[indexBlockchain];
+
+        // Calcular el ataque del estudiante Cobra
+        double porcentajeCintaCobra = estudianteCobra->getCinta()->getPorcentajeCinta();
+        double ataqueCobra = estudianteCobra->getOverall() * porcentajeCintaCobra;
+
+        // Calcular la defensa del estudiante Blockchain
+        double porcentajeCintaBlockchain = estudianteBlockchain->getCinta()->getPorcentajeCinta();
+        double defensaBlockchain = estudianteBlockchain->getOverall() * porcentajeCintaBlockchain;
+
+        // Calcular el daño
+        double danio = ataqueCobra - defensaBlockchain;
+        if (danio < 0) {
+            danio = 0;  // No puede ser negativo
+        }
+
+        // Restar el daño a la resistencia del estudiante Blockchain
+        estudianteBlockchain->restarResistencia(danio);
+
+        // Mostrar el resultado del enfrentamiento
+        std::cout << "Estudiante Cobra: " << estudianteCobra->getNombre() << " | "
+            << "Estudiante Blockchain: " << estudianteBlockchain->getNombre() << std::endl;
+    }
 }
-
 int main() {
-    std::srand(std::time(nullptr));  // Inicializar semilla aleatoria
-
     std::vector<Estudiante*> estudiantes;
 
     int opcion;
     do {
-        mostrarMenu();
-        std::cout << "Ingrese una opción: ";
-        std::cin >> opcion;
-        std::cout << std::endl;
+        opcion = mostrarMenu();
 
         switch (opcion) {
         case 1:
-            agregarEstudiante(estudiantes);
+            crearEstudiante(estudiantes);
             break;
         case 2:
-            mostrarEstudiantes(estudiantes);
-            break;
-        case 3:
             modificarEstudiante(estudiantes);
             break;
-        case 4:
+        case 3:
             eliminarEstudiante(estudiantes);
             break;
+        case 4:
+            listarEstudiantes(estudiantes);
+            break;
         case 5:
-            simularTorneo(estudiantes);
+            promoverCinta(estudiantes);
             break;
         case 6:
-            std::cout << "Saliendo del programa..." << std::endl;
+            degradarCinta(estudiantes);
+            break;
+        case 7:
+            simulacion(estudiantes);
+            break;
+        case 8:
+            std::cout << "Saliendo del programa...\n";
             break;
         default:
-            std::cout << "Opción inválida. Inténtalo nuevamente." << std::endl;
+            std::cout << "Opción inválida. Intente nuevamente.\n";
             break;
         }
 
         std::cout << std::endl;
-    } while (opcion != 6);
 
-    // Liberar memoria de los estudiantes
-    for (auto& estudiante : estudiantes) {
+    } while (opcion != 8);
+
+    // Liberar la memoria de los estudiantes
+    for (Estudiante* estudiante : estudiantes) {
         delete estudiante;
     }
+    estudiantes.clear();
 
     return 0;
 }
+
 

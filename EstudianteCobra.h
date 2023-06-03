@@ -2,19 +2,19 @@
 #define ESTUDIANTECOBRA_H
 
 #include "Estudiante.h"
-#include "Cinta.h"
 
 class EstudianteCobra : public Estudiante {
 private:
-    Cinta cinta;
+    int fuerzaPiernas;
 
 public:
-    EstudianteCobra(const std::string& nombre, int edad, const std::string& colorCinta, int nivelCinta);
+    EstudianteCobra(std::string nombre, int edad);
+    ~EstudianteCobra();
 
-    Cinta getCinta() const;
-    void setCinta(const Cinta& cinta);
+    int getFuerzaPiernas();
+    void setFuerzaPiernas(int fuerzaPiernas);
 
-    void mostrarInformacion() const override;
+    void setOverall(int overall);
 };
 
-#endif
+#endif  // ESTUDIANTECOBRA_H

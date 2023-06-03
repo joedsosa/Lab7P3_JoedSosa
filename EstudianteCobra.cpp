@@ -1,19 +1,22 @@
 #include "EstudianteCobra.h"
-#include <iostream>
 
-EstudianteCobra::EstudianteCobra(const std::string& nombre, int edad, const std::string& colorCinta, int nivelCinta)
-    : Estudiante(nombre, edad), cinta(colorCinta, nivelCinta) {}
-
-Cinta EstudianteCobra::getCinta() const {
-    return cinta;
+EstudianteCobra::EstudianteCobra(std::string nombre, int edad) : Estudiante(nombre, edad) {
+    this->fuerzaPiernas = rand() % 11;
+    this->setOverall(this->getOverall() + fuerzaPiernas);
 }
 
-void EstudianteCobra::setCinta(const Cinta& cinta) {
-    this->cinta = cinta;
+EstudianteCobra::~EstudianteCobra() {
 }
 
-void EstudianteCobra::mostrarInformacion() const {
-    Estudiante::mostrarInformacion();
-    std::cout << "Dojo: Cobra" << std::endl;
-    std::cout << "Cinta: " << cinta.getColor() << " (Nivel " << cinta.getNivel() << ")" << std::endl;
+int EstudianteCobra::getFuerzaPiernas() {
+    return fuerzaPiernas;
+}
+
+void EstudianteCobra::setFuerzaPiernas(int fuerzaPiernas) {
+    this->fuerzaPiernas = fuerzaPiernas;
+    this->setOverall(this->getOverall() + fuerzaPiernas);
+}
+double EstudianteCobra::getOverall() const {
+    // Implementación del método
+    return overall;
 }

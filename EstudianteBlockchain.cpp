@@ -1,19 +1,47 @@
 #include "EstudianteBlockchain.h"
-#include <iostream>
 
-EstudianteBlockchain::EstudianteBlockchain(const std::string& nombre, int edad, const std::string& colorCinta, int nivelCinta)
-    : Estudiante(nombre, edad), cinta(colorCinta, nivelCinta) {}
-
-Cinta EstudianteBlockchain::getCinta() const {
-    return cinta;
+EstudianteBlockchain::EstudianteBlockchain(std::string nombre, int edad) : Estudiante(nombre, edad) {
+    this->fuerzaBrazos = rand() % 11;
+    setOverall(getOverall() + fuerzaBrazos);
 }
 
-void EstudianteBlockchain::setCinta(const Cinta& cinta) {
-    this->cinta = cinta;
+EstudianteBlockchain::~EstudianteBlockchain() {
 }
 
-void EstudianteBlockchain::mostrarInformacion() const {
-    Estudiante::mostrarInformacion();
-    std::cout << "Dojo: Blockchain" << std::endl;
-    std::cout << "Cinta: " << cinta.getColor() << " (Nivel " << cinta.getNivel() << ")" << std::endl;
+int EstudianteBlockchain::getFuerzaBrazos() {
+    return fuerzaBrazos;
 }
+
+void EstudianteBlockchain::setFuerzaBrazos(int fuerzaBrazos) {
+    this->fuerzaBrazos = fuerzaBrazos;
+    setOverall(getOverall() + fuerzaBrazos);
+}
+
+void EstudianteBlockchain::setOverall(int overall) {
+    this->overall = overall;
+
+}
+int EstudianteBlockchain::getResistencia() const {
+    // Implementación del método
+    return resistencia;
+}
+double EstudianteBlockchain::restarResistencia(int cantidad) {
+    // Calcular la resistencia total según el nivel de cinta
+    double resistenciaTotal = resistencia * nivelCinta;
+
+    // Restar la cantidad de resistencia recibida
+    resistenciaTotal -= cantidad;
+
+    // Actualizar la resistencia del estudiante
+    resistencia = resistenciaTotal / nivelCinta;
+
+    // Verificar si la resistencia es menor o igual a cero
+    if (resistencia <= 0) {
+        resistencia = 0;
+    }
+
+    // Devolver la resistencia actualizada
+    return resistencia;
+}
+
+ 
