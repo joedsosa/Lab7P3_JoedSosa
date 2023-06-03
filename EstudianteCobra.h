@@ -13,7 +13,7 @@ public:
 
     int getFuerzaPiernas();
     void setFuerzaPiernas(int fuerzaPiernas);
-
+    double getOverall() const;
     void setOverall(int overall);
 };
 

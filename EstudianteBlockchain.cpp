@@ -17,7 +17,7 @@ void EstudianteBlockchain::setFuerzaBrazos(int fuerzaBrazos) {
     setOverall(getOverall() + fuerzaBrazos);
 }
 
-void EstudianteBlockchain::setOverall(int overall) {
+double EstudianteBlockchain::setOverall(int overall) {
     this->overall = overall;
 
 }

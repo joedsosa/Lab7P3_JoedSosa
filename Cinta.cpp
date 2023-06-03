@@ -52,7 +52,7 @@ void Cinta::setColorCinta() {
         break;
     }
 }
-void Cinta::calcularPorcentajeCinta(int color) {
+void Cinta::getPorcentajeCinta(int color) {
     // Calcular el porcentaje basado en el color de la cinta
     if (color == 1) {
         porcentajeCinta = 100.0;
